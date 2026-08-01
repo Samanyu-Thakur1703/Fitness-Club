@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Club Home</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="logo" href="index.html">Fitness Club</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="./html/login.html">Sign In</a></li>
+          <li><a href="./html/register.html">Sign Up</a></li>
+        </ul>
+        <button id="logoutBtn" type="button">Log Out</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero">
+        <div class="hero-copy">
+          <p>Stronger every day.</p>
+          <h1>Fitness Club for every goal</h1>
+          <p>Train smart, stay consistent, and transform your routine with expert guidance.</p>
+          <a class="hero-cta" href="#programs">Explore Programs</a>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Fitness training banner" />
+        </div>
+      </section>
+
+      <section id="programs">
+        <h2>Our Programs</h2>
+        <div class="programs-grid">
+          <article>
+            <img src="./images/program-strength.jpg" alt="Strength training" />
+            <h3>Strength Training</h3>
+            <p>Build muscle, improve posture, and boost confidence with structured resistance sessions.</p>
+          </article>
+          <article>
+            <img src="./images/program-cardio.jpg" alt="Cardio workout" />
+            <h3>Cardio Fitness</h3>
+            <p>Increase endurance and burn calories with high-energy cardio routines for all levels.</p>
+          </article>
+          <article>
+            <img src="./images/program-flexibility.jpg" alt="Flexibility session" />
+            <h3>Flexibility & Mobility</h3>
+            <p>Improve your range of motion and recover faster with guided stretching practices.</p>
+          </article>
+          <article>
+            <img src="./images/program-nutrition.jpg" alt="Nutrition coaching" />
+            <h3>Nutrition Coaching</h3>
+            <p>Support your progress with meal planning, guidance, and wellness tips tailored to you.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <section id="about-us">
+        <h2>About Us</h2>
+        <p>Fitness Club brings expert coaching, modern facilities, and community support to help you reach your health goals.</p>
+      </section>
+      <section id="contact-us">
+        <h2>Contact Us</h2>
+        <form action="#" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </footer>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
