@@ -33,15 +33,16 @@ header {
   right: 0;
   background: rgba(255, 255, 255, 0.98);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  z-index: 1000;
+  
 }
 
 nav {
   display: flex;
   align-items: center;
+
   justify-content: space-between;
-  max-width: 1180px;
   margin: 0 auto;
+
   padding: 1rem 1.5rem;
   gap: 1rem;
   display : fixed;
@@ -49,7 +50,11 @@ nav {
 
 .logo {
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.08px;
+  font-size: 50px;
+  line-height: 1.2;
+  text-align: left;
+  
 }
 
 .nav-links {
@@ -63,6 +68,7 @@ nav {
 .nav-links a {
   color: #2b2b2b;
   transition: color 0.2s ease;
+  text-decoration: capitalize;
 }
 
 .nav-links a:hover {
