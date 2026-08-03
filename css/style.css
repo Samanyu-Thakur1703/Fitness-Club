@@ -235,4 +235,5 @@ footer button {
   align-items: flex-start;
   gap: 40px;
   padding: 60px 8%;
-  flex-wrap: wrap;}
+  flex-wrap: wrap;
+}
