@@ -45,7 +45,7 @@ nav {
   text-transform: uppercase;
   padding: 1rem 1.5rem;
   gap: 1rem;
-  display : fixed;
+  
 }
 
 .logo {
@@ -126,3 +126,113 @@ footer button {
   padding: 0.95rem 1rem;
   border-radius: 0.75rem;
 }
+
+
+/* Left Section */
+#touch {
+  flex: 1;
+  min-width: 280px;
+}
+
+#touch h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+#touch p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+#touch ul {
+  list-style: none;
+  padding: 0;
+}
+
+#touch ul li {
+  margin-bottom: 15px;
+}
+
+#touch ul li a {
+  text-decoration: none;
+  color: #0077cc;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+#touch ul li a:hover {
+  color: #0056b3;
+}
+
+/* Right Section */
+#contact-us {
+  flex: 1;
+  min-width: 350px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+#contact-us h2 {
+  margin-bottom: 25px;
+  color: #222;
+}
+
+#contact-us form {
+  display: flex;
+  flex-direction: column;
+}
+
+#contact-us label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+#contact-us input,
+#contact-us textarea {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+#contact-us input:focus,
+#contact-us textarea:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 119, 204, 0.3);
+}
+
+#contact-us textarea {
+  resize: vertical;
+}
+
+#contact-us button {
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  background: #0077cc;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#contact-us button:hover {
+  background: #005fa3;}
+
+#contact-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 60px 8%;
+  flex-wrap: wrap;}
