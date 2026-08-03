@@ -42,7 +42,7 @@ nav {
 
   justify-content: space-between;
   margin: 0 auto;
-
+  text-transform: uppercase;
   padding: 1rem 1.5rem;
   gap: 1rem;
   display : fixed;
@@ -76,7 +76,14 @@ nav {
   color: #00796b;
 }
 
-#logoutBtn {
+.auth-buttons{
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+#signupBtn {
   background: #00796b;
   color: #ffffff;
   padding: 0.8rem 1.15rem;
