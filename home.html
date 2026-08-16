@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/home.css">
-  <title>THE VYBE</title>
+  <title>THE VYBE - Fitness Club</title>
 </head>
 
 <body>
 
-  <!--HEADER -->
   <header class="site-header">
     <nav class="navbar">
 
-      <a href="#hero" class="logo">
+      <a href="home.html#hero" class="logo">
         <img src="assets/logo.png" alt="logo" height="80px">
         <span>VYBE</span>
       </a>
 
-      <!-- Desktop Navigation -->
       <div class="desktop-nav">
-        <a href="#hero">HOME</a>
-        <a href="#programs">PROGRAMS</a>
-        <a href="#contact-section">CONTACT US</a>
+        <a href="home.html#hero">HOME</a>
+        <a href="home.html#programs">PROGRAMS</a>
+        <a href="contact.html">CONTACT US</a>
         <a href="#signin" class="signin">SIGN IN</a>
         <button id="signupBtn" type="button">SIGN UP</button>
       </div>
 
-      <!-- Mobile Navigation -->
       <details class="mobile-menu">
         <summary class="menu-button" aria-label="Open navigation menu">
           <span></span>
@@ -37,56 +35,49 @@
         </summary>
 
         <div class="mobile-menu-content">
-          <a href="#hero">HOME</a>
-          <a href="#programs">PROGRAMS</a>
-          <a href="#contact-section">CONTACT US</a>
+          <a href="home.html#hero">HOME</a>
+          <a href="home.html#programs">PROGRAMS</a>
+          <a href="contact.html">CONTACT US</a>
           <a href="#signin" class="signin">SIGN IN</a>
           <button id="mobileSignupBtn" type="button">SIGN UP</button>
         </div>
       </details>
 
-      <!-- Dark / Light Mode -->
-      <button
-        id="themeToggle"
-        class="theme-toggle"
-        type="button"
-        aria-label="Toggle dark and light mode"
-      >
-        DARK / LIGHT
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark and light mode" title="Toggle dark/light theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
       </button>
 
     </nav>
   </header>
 
-
-  <!-- MAIN-->
   <main>
 
-    <!-- HERO-->
     <section id="hero" class="hero-section">
-
       <div class="hero-copy">
-
         <p class="hero-tagline">STRONGER EVERY DAY.</p>
-
         <h1>FITNESS CLUB FOR EVERY GOAL</h1>
-
         <p class="hero-description">
-          Train smart, stay consistent, and transform your routine
-          with expert guidance.
+          Train smart, stay consistent, and transform your routine with expert guidance.
         </p>
-
         <a class="hero-cta" href="#programs">
           EXPLORE PROGRAMS
         </a>
-
       </div>
-
-
     </section>
 
-
-    <!-- ================= PROGRAMS ================= -->
     <section id="programs" class="programs-section">
 
       <div class="section-heading">
@@ -98,94 +89,64 @@
 
       <div class="programs-grid">
 
-        <article class="program-card">
-
+        <a href="strength-training.html" class="program-card">
           <div class="program-image">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXCEBm7Xm6UWTqIeiuWKtcVrRhaYoz0M3bOJZfB2ZiIOOfrfcT63BrCfo&s=10"
-              alt="Strength training"
-              class="image-banner"
-              loading="lazy"
-            />
+              alt="Strength training" class="image-banner" loading="lazy" />
           </div>
-
           <div class="program-content">
             <h3>STRENGTH TRAINING</h3>
-
             <p>
-              Build muscle, improve posture, and boost confidence
-              with structured resistance sessions.
+              Build muscle, improve posture, and boost confidence with structured resistance sessions.
             </p>
+            <span class="program-btn">Explore Program &rarr;</span>
           </div>
+        </a>
 
-        </article>
-
-        <article class="program-card">
-
+        <a href="cardio-fitness.html" class="program-card">
           <div class="program-image">
             <img
               src="https://hips.hearstapps.com/hmg-prod/images/cardio-equipment1-6908cb9a0ec0e.jpg?crop=0.8666666666666667xw:1xh;center,top&resize=1200:*"
-              alt="Cardio workout"
-              class="image-banner"
-              loading="lazy"
-            />
+              alt="Cardio workout" class="image-banner" loading="lazy" />
           </div>
-
           <div class="program-content">
             <h3>CARDIO FITNESS</h3>
-
             <p>
-              Increase endurance and burn calories with high-energy
-              cardio routines for all levels.
+              Increase endurance and burn calories with high-energy cardio routines for all levels.
             </p>
+            <span class="program-btn">Explore Program &rarr;</span>
           </div>
+        </a>
 
-        </article>
-
-
-        <article class="program-card">
-
+        <a href="flexibility-mobility.html" class="program-card">
           <div class="program-image">
             <img
               src="https://hips.hearstapps.com/hmg-prod/images/mobility-flexibility-1626794520.jpg?crop=0.671xw:1.00xh;0.166xw,0&resize=1200:*"
-              alt="Flexibility and mobility session"
-              class="image-banner"
-              loading="lazy"
-            />
+              alt="Flexibility and mobility session" class="image-banner" loading="lazy" />
           </div>
-
           <div class="program-content">
             <h3>FLEXIBILITY &amp; MOBILITY</h3>
-
             <p>
-              Improve your range of motion and recover faster
-              with guided stretching practices.
+              Improve your range of motion and recover faster with guided stretching practices.
             </p>
+            <span class="program-btn">Explore Program &rarr;</span>
           </div>
+        </a>
 
-        </article>
-
-        <article class="program-card">
-
+        <a href="nutrition-coaching.html" class="program-card">
           <div class="program-image">
-            <img
-              src="https://blog.nasm.org/hubfs/nutrition-coach-questions.jpg"
-              alt="Nutrition coaching"
-              class="image-banner"
-              loading="lazy"
-            />
+            <img src="https://blog.nasm.org/hubfs/nutrition-coach-questions.jpg" alt="Nutrition coaching"
+              class="image-banner" loading="lazy" />
           </div>
-
           <div class="program-content">
             <h3>NUTRITION COACHING</h3>
-
             <p>
-              Support your progress with meal planning, guidance,
-              and wellness tips tailored to you.
+              Support your progress with meal planning, guidance, and wellness tips tailored to you.
             </p>
+            <span class="program-btn">Explore Program &rarr;</span>
           </div>
-
-        </article>
+        </a>
 
       </div>
 
@@ -193,119 +154,63 @@
 
   </main>
 
-
-  <!-- CONTACT -->
   <div id="contact-section">
-
     <section id="touch" class="contact-section">
-
       <div class="contact-content">
-
         <h2>GET IN TOUCH</h2>
-
         <p>
           Have questions or need help? We're here to assist you.<br />
           Reach out to us anytime!
         </p>
 
         <ul class="contact-links">
-
-          <!-- Email -->
           <li>
             <a href="mailto:support@fitnessclub.com">
-
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
               </svg>
-
               <span>support@fitnessclub.com</span>
-
             </a>
           </li>
 
-
-          <!-- Phone -->
           <li>
             <a href="tel:+911234567890">
-
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
               </svg>
-
               <span>+91 12345 67890</span>
-
             </a>
           </li>
 
-
-          <!-- Instagram -->
           <li>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-
-              <svg
-                width="20"
-                height="20"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
               </svg>
-
               <span>@fitnessclub</span>
-
             </a>
           </li>
-
         </ul>
 
       </div>
-
     </section>
-
   </div>
 
-
-  <!-- FOOTER -->
   <footer class="site-footer">
-
     <div class="footer-content">
-
       <div class="footer-brand">
         <span class="footer-logo"><img src="assets/logo.png" alt="logo" height="60px"></span>
-
-        <span class="footer-name">
-          FITNESS CLUB
-        </span>
+        <span class="footer-name">FITNESS CLUB</span>
       </div>
-
-      <p class="footer-tagline">
-        STRONGER EVERY DAY.
-      </p>
-
-      <p class="copyright">
-        &copy; 2026 FITNESS CLUB. ALL RIGHTS RESERVED.
-      </p>
-
+      <p class="footer-tagline">STRONGER EVERY DAY.</p>
+      <p class="copyright">&copy; 2026 FITNESS CLUB. ALL RIGHTS RESERVED.</p>
     </div>
-
   </footer>
+
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
+
 </html>

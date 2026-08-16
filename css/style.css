@@ -1,239 +1,753 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-}
-
-html,
-body {
   margin: 0;
   padding: 0;
-  font-family: 'apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  color: #1c1c1c;
-  background: #f7f7f7;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  line-height: 1.5;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #e8e0d0;
+  background-color: #0a0b0f;
+  line-height: 1.6;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  overflow-x: hidden;
+  background-image: radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(32, 178, 170, 0.04) 0%, transparent 50%);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
 }
 
 button {
   cursor: pointer;
   border: none;
-  font: inherit;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  transition: all 0.2s ease;
 }
 
-header {
+:focus-visible {
+  outline: 2px solid #f5c842;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 11, 15, 0.96);
+  border-bottom: 1px solid rgba(245, 200, 66, 0.2);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-nav {
+.navbar {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0.65rem 1.25rem;
   display: flex;
   align-items: center;
-
   justify-content: space-between;
-  margin: 0 auto;
-  text-transform: uppercase;
-  padding: 1rem 1.5rem;
-  gap: 1rem;
-  
+  position: relative;
+  gap: 0.75rem;
 }
 
 .logo {
-  font-weight: 700;
-  letter-spacing: 0.08px;
-  font-size: 50px;
-  line-height: 1.2;
-  text-align: left;
-  
-}
-
-.nav-links {
   display: flex;
-  list-style: none;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  min-height: 48px;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+  z-index: 1010;
 }
 
-.nav-links a {
-  color: #2b2b2b;
-  transition: color 0.2s ease;
-  text-decoration: capitalize;
+.logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(245, 200, 66, 0.45));
 }
 
-.nav-links a:hover {
-  color: #00796b;
-}
-
-.auth-buttons{
+.logo span {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: 0.18em;
+  color: #f5c842;
+  text-shadow: 0 0 20px rgba(245, 200, 66, 0.5), 0 0 40px rgba(245, 200, 66, 0.2);
   text-transform: uppercase;
-  display:flex;
-  align-items:center;
-  gap:20px;
 }
 
-#signupBtn {
-  background: #00796b;
-  color: #ffffff;
-  padding: 0.8rem 1.15rem;
-  border-radius: 999px;
-
+.desktop-nav {
+  display: none;
 }
 
-#logoutBtn:hover {
-  background: #00574b;
-  
+.mobile-menu {
+  position: relative;
+  z-index: 1005;
 }
 
-main {
-  padding-top: 100px;
+.mobile-menu summary.menu-button {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 200, 66, 0.45);
+  background: #14161f;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
 }
 
-footer {
-  padding: 3rem 1.5rem 2rem;
-  background: #ffffff;
+.mobile-menu summary::marker {
+  display: none;
 }
 
-footer h2 {
-  margin-top: 0;
+.mobile-menu summary.menu-button span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #f5c842;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-footer form {
-  display: grid;
+.mobile-menu[open] summary.menu-button {
+  background: #f5c842;
+  border-color: #f5c842;
+}
+
+.mobile-menu[open] summary.menu-button span {
+  background: #0a0b0f;
+}
+
+.mobile-menu[open] summary.menu-button span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu[open] summary.menu-button span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu[open] summary.menu-button span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-content {
+  position: fixed;
+  top: 72px;
+  left: 1rem;
+  right: 1rem;
+  background: #12141c;
+  border: 1px solid rgba(245, 200, 66, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(245, 200, 66, 0.08);
+  padding: 1.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: slideDownMenu 0.3s ease forwards;
+  z-index: 1000;
+}
+
+@keyframes slideDownMenu {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mobile-menu-content a {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #e8e0d0;
+  min-height: 48px;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-content a:hover,
+.mobile-menu-content a:focus {
+  background: rgba(245, 200, 66, 0.1);
+  color: #f5c842;
+  transform: translateX(6px);
+}
+
+.mobile-menu-content a.signin {
+  color: #f5c842;
+}
+
+#mobileSignupBtn {
+  min-height: 48px;
+  width: 100%;
+  background: #f5c842;
+  color: #0a0b0f;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  border-radius: 9999px;
+  padding: 0.85rem 1.5rem;
+  box-shadow: 0 0 30px rgba(245, 200, 66, 0.4);
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+#mobileSignupBtn:hover {
+  background: #ffd84a;
+  box-shadow: 0 0 40px rgba(245, 200, 66, 0.6);
+  transform: scale(1.02);
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 9999px;
+  border: 1px solid rgba(245, 200, 66, 0.4);
+  background: #14161f;
+  color: #f5c842;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+
+.theme-toggle .sun-icon {
+  display: block;
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+.theme-toggle:hover {
+  background: #f5c842;
+  color: #0a0b0f;
+  border-color: #f5c842;
+  box-shadow: 0 0 30px rgba(245, 200, 66, 0.5);
+  transform: rotate(15deg) scale(1.06);
+}
+
+#contact-section {
+  width: 100%;
+  background-color: #0d0f17;
+  border-top: 1px solid rgba(245, 200, 66, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+#contact-section::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(245, 200, 66, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem;
+}
+
+.contact-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.contact-content h2 {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5c842;
+  text-shadow: 0 0 20px rgba(245, 200, 66, 0.4);
+  position: relative;
+  display: inline-block;
+}
+
+.contact-content h2::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #f5c842, #20b2aa);
+  margin: 0.6rem auto 0;
+  border-radius: 9999px;
+}
+
+.contact-content p {
+  color: #9e988e;
+  font-size: 1rem;
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+.contact-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  max-width: 460px;
+  margin-top: 1rem;
 }
 
-footer input,
-footer textarea,
-footer button {
+.contact-links li {
   width: 100%;
 }
 
-footer button {
-  background: #00796b;
-  color: #fff;
-  padding: 0.95rem 1rem;
-  border-radius: 0.75rem;
+.contact-links li a {
+  min-height: 48px;
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  background: #14161f;
+  border: 1px solid rgba(245, 200, 66, 0.18);
+  border-radius: 14px;
+  color: #e8e0d0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-
-
-#touch {
-  flex: 1;
-  min-width: 280px;
+.contact-links li a svg {
+  width: 22px;
+  height: 22px;
+  color: #f5c842;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
-#touch h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #222;
+.contact-links li a:hover {
+  background: #1a1d2a;
+  border-color: rgba(245, 200, 66, 0.5);
+  color: #f5c842;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(245, 200, 66, 0.12);
 }
 
-#touch p {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 25px;
+.contact-links li a:hover svg {
+  transform: scale(1.15);
 }
 
-#touch ul {
-  list-style: none;
-  padding: 0;
+.site-footer {
+  background-color: #07080c;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3rem 1.25rem 2.5rem;
+  text-align: center;
+  position: relative;
 }
 
-#touch ul li {
-  margin-bottom: 15px;
-}
-
-#touch ul li a {
-  text-decoration: none;
-  color: #0077cc;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-#touch ul li a:hover {
-  color: #0056b3;
-}
-
-/* Right Section */
-#contact-us {
-  flex: 1;
-  min-width: 350px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-#contact-us h2 {
-  margin-bottom: 25px;
-  color: #222;
-}
-
-#contact-us form {
+.footer-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-#contact-us label {
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #333;
-}
-
-#contact-us input,
-#contact-us textarea {
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: 0.3s;
-}
-
-#contact-us input:focus,
-#contact-us textarea:focus {
-  border-color: #0077cc;
-  box-shadow: 0 0 5px rgba(0, 119, 204, 0.3);
-}
-
-#contact-us textarea {
-  resize: vertical;
-}
-
-#contact-us button {
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  background: #0077cc;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#contact-us button:hover {
-  background: #005fa3;}
-
-#contact-section{
+.footer-brand {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 60px 8%;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(245, 200, 66, 0.3));
+}
+
+.footer-name {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #f5c842;
+  text-transform: uppercase;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: #f5c842;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.copyright {
+  font-size: 0.82rem;
+  color: #4d4d5a;
+  letter-spacing: 0.05em;
+}
+
+[data-theme="light"] body {
+  background-color: #f7f4ef;
+  color: #1a1b22;
+  background-image: radial-gradient(ellipse at 20% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(32, 178, 170, 0.04) 0%, transparent 50%);
+}
+
+[data-theme="light"] .site-header {
+  background: rgba(247, 244, 239, 0.97);
+  border-color: rgba(179, 135, 40, 0.25);
+}
+
+[data-theme="light"] .logo span {
+  color: #b38728;
+  text-shadow: none;
+}
+
+[data-theme="light"] .logo img {
+  filter: drop-shadow(0 0 8px rgba(179, 135, 40, 0.3));
+}
+
+[data-theme="light"] .mobile-menu summary.menu-button {
+  background: #ffffff;
+  border-color: rgba(179, 135, 40, 0.5);
+}
+
+[data-theme="light"] .mobile-menu summary.menu-button span {
+  background: #b38728;
+}
+
+[data-theme="light"] .mobile-menu[open] summary.menu-button {
+  background: #b38728;
+  border-color: #b38728;
+}
+
+[data-theme="light"] .mobile-menu[open] summary.menu-button span {
+  background: #ffffff;
+}
+
+[data-theme="light"] .mobile-menu-content {
+  background: #ffffff;
+  border-color: rgba(179, 135, 40, 0.35);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .mobile-menu-content a {
+  color: #1a1b22;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .mobile-menu-content a:hover,
+[data-theme="light"] .mobile-menu-content a:focus {
+  background: rgba(179, 135, 40, 0.12);
+  color: #7a5813;
+}
+
+[data-theme="light"] .mobile-menu-content a.signin {
+  color: #b38728;
+}
+
+[data-theme="light"] #mobileSignupBtn {
+  background: #b38728;
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(179, 135, 40, 0.3);
+}
+
+[data-theme="light"] #mobileSignupBtn:hover {
+  background: #c5a04a;
+  box-shadow: 0 0 32px rgba(179, 135, 40, 0.45);
+}
+
+[data-theme="light"] .theme-toggle {
+  background: #ffffff;
+  border-color: rgba(179, 135, 40, 0.5);
+  color: #b38728;
+}
+
+[data-theme="light"] .theme-toggle .sun-icon {
+  display: none;
+}
+
+[data-theme="light"] .theme-toggle .moon-icon {
+  display: block;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background: #b38728;
+  color: #ffffff;
+  box-shadow: 0 0 24px rgba(179, 135, 40, 0.35);
+}
+
+[data-theme="light"] #contact-section {
+  background-color: #ede8e0;
+  border-color: rgba(179, 135, 40, 0.2);
+}
+
+[data-theme="light"] .contact-content h2 {
+  color: #b38728;
+  text-shadow: none;
+}
+
+[data-theme="light"] .contact-content h2::after {
+  background: linear-gradient(90deg, #b38728, #20b2aa);
+}
+
+[data-theme="light"] .contact-content p {
+  color: #5a5760;
+}
+
+[data-theme="light"] .contact-links li a {
+  background: #ffffff;
+  border-color: rgba(179, 135, 40, 0.2);
+  color: #1a1b22;
+}
+
+[data-theme="light"] .contact-links li a svg {
+  color: #b38728;
+}
+
+[data-theme="light"] .contact-links li a:hover {
+  background: #fdf9f3;
+  border-color: rgba(179, 135, 40, 0.5);
+  color: #7a5813;
+  box-shadow: 0 8px 24px rgba(179, 135, 40, 0.1);
+}
+
+[data-theme="light"] .site-footer {
+  background-color: #f0ece5;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .footer-name {
+  color: #b38728;
+}
+
+[data-theme="light"] .footer-tagline {
+  color: #b38728;
+}
+
+[data-theme="light"] .copyright {
+  color: #9a9aa8;
+}
+
+@media (min-width: 640px) {
+  .navbar {
+    padding: 0.85rem 2rem;
+  }
+
+  .logo img {
+    height: 56px;
+  }
+
+  .logo span {
+    font-size: 1.65rem;
+  }
+
+  .contact-content h2 {
+    font-size: 2.35rem;
+  }
+
+  .contact-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 720px;
+  }
+
+  .contact-links li {
+    width: calc(50% - 0.5rem);
+  }
+
+  .contact-links li:last-child:nth-child(odd) {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    padding: 1rem 3rem;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .desktop-nav a {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #9a9282;
+    min-height: 48px;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #f5c842, #20b2aa);
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 9999px;
+  }
+
+  .desktop-nav a:hover {
+    color: #f5c842;
+  }
+
+  .desktop-nav a:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+
+  .desktop-nav a.signin {
+    color: #f5c842;
+    font-weight: 700;
+  }
+
+  #signupBtn {
+    min-height: 48px;
+    background: #f5c842;
+    color: #0a0b0f;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+    padding: 0.75rem 1.6rem;
+    border-radius: 9999px;
+    box-shadow: 0 0 28px rgba(245, 200, 66, 0.4);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+  }
+
+  #signupBtn:hover {
+    background: #ffd84a;
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba(245, 200, 66, 0.6);
+  }
+
+  [data-theme="light"] .desktop-nav a {
+    color: #5a5760;
+  }
+
+  [data-theme="light"] .desktop-nav a:hover {
+    color: #7a5813;
+  }
+
+  [data-theme="light"] .desktop-nav a::after {
+    background: linear-gradient(90deg, #b38728, #20b2aa);
+  }
+
+  [data-theme="light"] .desktop-nav a.signin {
+    color: #b38728;
+  }
+
+  [data-theme="light"] #signupBtn {
+    background: #b38728;
+    color: #ffffff;
+    box-shadow: 0 0 22px rgba(179, 135, 40, 0.3);
+  }
+
+  [data-theme="light"] #signupBtn:hover {
+    background: #c5a04a;
+    box-shadow: 0 0 32px rgba(179, 135, 40, 0.5);
+  }
+
+  .contact-links {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    max-width: 960px;
+    gap: 1.25rem;
+  }
+
+  .contact-links li {
+    flex: 1;
+    width: auto;
+  }
+
+  .contact-links li:last-child:nth-child(odd) {
+    width: auto;
+    max-width: none;
+  }
 }

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <title>Contact Us - THE VYBE</title>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+
+      <a href="home.html#hero" class="logo">
+        <img src="assets/logo.png" alt="logo" height="80px">
+        <span>VYBE</span>
+      </a>
+
+      <div class="desktop-nav">
+        <a href="home.html#hero">HOME</a>
+        <a href="home.html#programs">PROGRAMS</a>
+        <a href="contact.html">CONTACT US</a>
+        <a href="#signin" class="signin">SIGN IN</a>
+        <button id="signupBtn" type="button">SIGN UP</button>
+      </div>
+
+      <details class="mobile-menu">
+        <summary class="menu-button" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+
+        <div class="mobile-menu-content">
+          <a href="home.html#hero">HOME</a>
+          <a href="home.html#programs">PROGRAMS</a>
+          <a href="contact.html">CONTACT US</a>
+          <a href="#signin" class="signin">SIGN IN</a>
+          <button id="mobileSignupBtn" type="button">SIGN UP</button>
+        </div>
+      </details>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark and light mode" title="Toggle dark/light theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="contact-hero-banner">
+      <div class="contact-hero-inner">
+        <span class="contact-badge">GET IN TOUCH</span>
+        <h1>CONTACT US</h1>
+        <p>
+          Have questions about our programs, memberships, or personal training? Reach out to our team or visit our flagship club today.
+        </p>
+      </div>
+    </section>
+
+    <div class="contact-main-wrapper">
+
+      <div class="contact-layout-grid">
+
+        <div class="form-container">
+          <h2>Send Us A Message</h2>
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" class="form-control" placeholder="e.g. Alex Morgan" required />
+              </div>
+              <div class="form-group">
+                <label for="emailAddr">Email Address</label>
+                <input type="email" id="emailAddr" class="form-control" placeholder="e.g. alex@example.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phoneNum">Phone Number</label>
+                <input type="tel" id="phoneNum" class="form-control" placeholder="+91 98765 43210" required />
+              </div>
+              <div class="form-group">
+                <label for="programInterest">Interested Program</label>
+                <select id="programInterest" class="form-control">
+                  <option value="strength">Strength Training</option>
+                  <option value="cardio">Cardio Fitness</option>
+                  <option value="flexibility">Flexibility &amp; Mobility</option>
+                  <option value="nutrition">Nutrition Coaching</option>
+                  <option value="general">General Membership</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="messageBox">Your Message / Fitness Goals</label>
+              <textarea id="messageBox" class="form-control" placeholder="Tell us about your fitness background and goals..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn">SEND MESSAGE</button>
+          </form>
+        </div>
+
+        <div class="info-cards-stack">
+
+          <div class="info-card">
+            <h3>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Operating Hours</span>
+            </h3>
+            <div class="hours-table">
+              <div class="hours-row">
+                <span class="hours-day">Monday - Friday</span>
+                <span class="hours-time">05:00 AM - 11:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Saturday</span>
+                <span class="hours-time">06:00 AM - 10:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Sunday &amp; Holidays</span>
+                <span class="hours-time">07:00 AM - 08:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Club Location &amp; Contact</span>
+            </h3>
+            <ul class="contact-details-list">
+              <li>
+                <strong>Address:</strong> 104 Luxury Athletic Boulevard, Cyber City
+              </li>
+              <li>
+                <strong>Email:</strong> <a href="mailto:support@fitnessclub.com">support@fitnessclub.com</a>
+              </li>
+              <li>
+                <strong>Phone:</strong> <a href="tel:+911234567890">+91 12345 67890</a>
+              </li>
+              <li>
+                <strong>Instagram:</strong> <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">@thevybeclub</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <section class="faq-section">
+        <div class="faq-heading">
+          <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-card">
+            <h4>Can I try a free day pass?</h4>
+            <p>Yes! First-time visitors receive a complimentary 1-day pass to explore all gym equipment, studio classes, and facilities.</p>
+          </div>
+          <div class="faq-card">
+            <h4>Are locker rooms and showers available?</h4>
+            <p>Yes, our facility includes executive locker rooms, rainfall showers, steam saunas, and complimentary towel service.</p>
+          </div>
+          <div class="faq-card">
+            <h4>Can I freeze or cancel my membership?</h4>
+            <p>You can freeze your membership anytime for up to 60 days per year with zero administrative fees.</p>
+          </div>
+          <div class="faq-card">
+            <h4>Do you offer customized personal training?</h4>
+            <p>All members receive a complimentary initial physical assessment and can book 1-on-1 private sessions with certified master coaches.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo"><img src="assets/logo.png" alt="logo" height="60px"></span>
+        <span class="footer-name">FITNESS CLUB</span>
+      </div>
+      <p class="footer-tagline">STRONGER EVERY DAY.</p>
+      <p class="copyright">&copy; 2026 FITNESS CLUB. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
