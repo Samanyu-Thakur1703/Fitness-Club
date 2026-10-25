@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <title>Athlete Profile - THE VYBE</title>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+
+      <a href="home.html#hero" class="logo">
+        <img src="assets/logo.png" alt="logo" height="80px">
+        <span>VYBE</span>
+      </a>
+
+      <div class="desktop-nav">
+        <a href="home.html#hero">HOME</a>
+        <a href="home.html#programs">PROGRAMS</a>
+        <a href="contact.html">CONTACT US</a>
+        <a href="profile.html" class="signin active">PROFILE</a>
+        <button id="signupBtn" type="button">LOGOUT</button>
+      </div>
+
+      <details class="mobile-menu">
+        <summary class="menu-button" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+
+        <div class="mobile-menu-content">
+          <a href="home.html#hero">HOME</a>
+          <a href="home.html#programs">PROGRAMS</a>
+          <a href="contact.html">CONTACT US</a>
+          <a href="profile.html" class="signin active">PROFILE</a>
+          <button id="mobileSignupBtn" type="button">LOGOUT</button>
+        </div>
+      </details>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark and light mode" title="Toggle dark/light theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+    </nav>
+  </header>
+
+  <main>
+    <div class="profile-container">
+
+      <!-- Guest Fallback Screen (shown when not logged in) -->
+      <section id="guestSection" class="guest-warning" style="display: none;">
+        <h2>ATHLETE ACCESS REQUIRED</h2>
+        <p>You need to be signed in to view your athlete dashboard and training metrics.</p>
+        <div class="guest-warning-actions">
+          <a href="html/login.html" class="form-submit-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">SIGN IN</a>
+          <a href="html/register.html" class="db-btn" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center; padding: 0.85rem 1.75rem; border-radius: 9999px;">CREATE ACCOUNT</a>
+        </div>
+      </section>
+
+      <!-- Authenticated Profile View -->
+      <div id="authSection" style="display: flex; flex-direction: column; gap: 2.5rem;">
+
+        <!-- 1. Athlete Header Card -->
+        <section class="profile-header-card">
+          <div class="profile-user-summary">
+            <div id="profileAvatar" class="profile-avatar">AM</div>
+            <div class="profile-user-details">
+              <div class="profile-name-row">
+                <h1 id="profileName">Athlete Name</h1>
+                <span class="profile-badge">PRO ATHLETE</span>
+              </div>
+              <p id="profileEmail" class="profile-email">athlete@thevybe.com</p>
+              <p class="profile-meta">
+                <span>Member Since: <strong id="profileMemberSince" style="color: #f5c842;">October 2026</strong></span> •
+                <span>Account ID: <code id="profileAccountId" style="font-family: monospace; color: #20b2aa;">usr_0001</code></span>
+              </p>
+            </div>
+          </div>
+
+          <div class="profile-actions-bar">
+            <button id="logoutProfileBtn" class="btn-danger-outline" type="button">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span>SIGN OUT</span>
+            </button>
+            <a href="home.html#programs" class="db-btn" style="text-decoration: none;">EXPLORE PROGRAMS</a>
+            <a href="contact.html" class="db-btn" style="text-decoration: none;">CONTACT COACH</a>
+          </div>
+        </section>
+
+        <!-- 2. Performance Metrics Grid -->
+        <section class="profile-card">
+          <div class="profile-card-header">
+            <h2>Athlete Metrics &amp; Progress</h2>
+            <span class="profile-badge">OCTOBER 2026</span>
+          </div>
+
+          <div class="metrics-strip">
+            <div class="metric-box">
+              <span class="metric-val">18</span>
+              <span class="metric-lbl">Workouts Done</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val">6 Days</span>
+              <span class="metric-lbl">Active Streak</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val">14,200</span>
+              <span class="metric-lbl">Calories Burned</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val">82.5 kg</span>
+              <span class="metric-lbl">Target: 80 kg</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. Dashboard Details (Active Program & Next Session) -->
+        <div class="profile-grid">
+
+          <section class="profile-card">
+            <div class="profile-card-header">
+              <h2>Enrolled Training Program</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <h3 style="font-family: 'Outfit', sans-serif; color: #f5c842; font-size: 1.4rem;">STRENGTH &amp; HYPERTROPHY — PHASE 2</h3>
+              <p style="color: #9a9282; font-size: 0.95rem; line-height: 1.6;">
+                Focused on compound lifts, progressive overload, and high-intensity power development. Includes personalized coach check-ins and nutrition tracking.
+              </p>
+              <div style="display: flex; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap;">
+                <span class="db-badge">Coach: Marcus Vance</span>
+                <span class="db-badge">Schedule: 5 Days / Week</span>
+                <span class="db-badge">Tier: VIP Elite</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="profile-card">
+            <div class="profile-card-header">
+              <h2>Next Coaching Session</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="background: rgba(32, 178, 170, 0.08); border-left: 3px solid #20b2aa; padding: 1rem; border-radius: 8px;">
+                <strong style="color: #20b2aa; display: block; font-size: 1.05rem;">Tomorrow, 07:00 AM</strong>
+                <span style="color: #e8e0d0; font-size: 0.92rem;">Heavy Deadlift &amp; Posterior Chain Focus</span>
+                <span style="color: #9a9282; font-size: 0.85rem; display: block; margin-top: 0.35rem;">Platform 3 • With Lead Coach Marcus</span>
+              </div>
+              <a href="contact.html" class="db-btn" style="text-align: center; justify-content: center; margin-top: 0.5rem;">RESCHEDULE SESSION</a>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- 4. Client-Side JSON Database Inspector -->
+        <section class="profile-card db-card">
+          <div class="db-toolbar">
+            <div>
+              <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 800; color: #f5c842; letter-spacing: 0.04em;">
+                CLIENT-SIDE JSON DATABASE INSPECTOR
+              </h2>
+              <p style="color: #9a9282; font-size: 0.88rem; margin-top: 0.25rem;">
+                Backing store: <code style="color: #20b2aa;">localStorage.getItem('vybe-users')</code>. Updated instantly on registration!
+              </p>
+            </div>
+
+            <div class="db-actions">
+              <button id="downloadJsonBtn" class="db-btn db-btn-primary" type="button" title="Download the live users.json file to your disk">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>DOWNLOAD USERS.JSON</span>
+              </button>
+
+              <button id="copyJsonBtn" class="db-btn" type="button" title="Copy raw JSON to clipboard">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span>COPY JSON</span>
+              </button>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <span class="db-badge">Accounts Count: <strong id="dbAccountCount">1</strong></span>
+            <span class="db-badge">Active Session Key: <strong id="dbSessionKey">usr_0001</strong></span>
+          </div>
+
+          <!-- Raw JSON Viewer -->
+          <pre class="json-code-box"><code id="jsonViewer">{ "loading": true }</code></pre>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a class="footer-logo" href="home.html#hero"><img src="assets/logo.png" alt="The Vybe Fitness Club logo"></a>
+        <span class="footer-name">THE VYBE</span>
+        <p class="footer-tagline">More than a gym. It's a lifestyle.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">x</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h2>Quick Links</h2>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="home.html#hero">Home</a>
+          <a href="home.html#programs">Programs</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="profile.html">My Profile</a>
+        </nav>
+      </div>
+      <div class="footer-column">
+        <h2>Programs</h2>
+        <nav class="footer-links" aria-label="Program navigation">
+          <a href="strength-training.html">Strength Training</a>
+          <a href="cardio-fitness.html">Cardio Fitness</a>
+          <a href="flexibility-mobility.html">Flexibility &amp; Mobility</a>
+          <a href="nutrition-coaching.html">Nutrition Coaching</a>
+        </nav>
+      </div>
+      <div class="footer-column">
+        <h2>Contact</h2>
+        <div class="footer-contact">
+          <a href="tel:+911234567890"><strong>Phone</strong>+91 12345 67890</a>
+          <a href="mailto:info@thevybefitness.com"><strong>Email</strong>info@thevybefitness.com</a>
+          <address><strong>Visit Us</strong>123 Fitness Street,<br>Your City</address>
+        </div>
+      </div>
+    </div>
+    <span class="footer-accent" aria-hidden="true"></span>
+    <p class="copyright">&copy; 2026 THE VYBE. All rights reserved.</p>
+  </footer>
+
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const guestSection = document.getElementById('guestSection');
+      const authSection = document.getElementById('authSection');
+
+      // 1. Read active session from storage
+      const sessionId = localStorage.getItem('vybe-session');
+      const rawUsers = localStorage.getItem('vybe-users');
+
+      let currentAccount = null;
+      let usersStore = null;
+
+      if (rawUsers) {
+        try {
+          usersStore = JSON.parse(rawUsers);
+          if (usersStore && Array.isArray(usersStore.users) && sessionId) {
+            currentAccount = usersStore.users.find(u => u.id === sessionId);
+          }
+        } catch (_) {}
+      }
+
+      // If user is not logged in, display guest notification
+      if (!currentAccount) {
+        guestSection.style.display = 'flex';
+        authSection.style.display = 'none';
+        return;
+      }
+
+      // 2. Populate Athlete Data
+      guestSection.style.display = 'none';
+      authSection.style.display = 'flex';
+
+      document.getElementById('profileName').textContent = currentAccount.name || 'Athlete';
+      document.getElementById('profileEmail').textContent = currentAccount.email || 'athlete@thevybe.com';
+      document.getElementById('profileMemberSince').textContent = currentAccount.memberSince || 'October 2026';
+      document.getElementById('profileAccountId').textContent = currentAccount.id || 'usr_0001';
+
+      // Compute avatar initials
+      const nameParts = (currentAccount.name || 'Athlete').trim().split(' ');
+      const initials = nameParts.length > 1
+        ? (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase()
+        : nameParts[0].slice(0, 2).toUpperCase();
+      document.getElementById('profileAvatar').textContent = initials;
+
+      // 3. Populate JSON Database Inspector
+      const jsonViewer = document.getElementById('jsonViewer');
+      const formattedJson = JSON.stringify(usersStore || { users: [currentAccount] }, null, 2);
+      jsonViewer.textContent = formattedJson;
+
+      document.getElementById('dbAccountCount').textContent = usersStore?.users?.length || 1;
+      document.getElementById('dbSessionKey').textContent = currentAccount.id;
+
+      // 4. Download users.json functionality
+      document.getElementById('downloadJsonBtn').addEventListener('click', function () {
+        const blob = new Blob([formattedJson], { type: 'application/json' });
+        const downloadUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = 'users.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(downloadUrl);
+      });
+
+      // 5. Copy JSON to Clipboard
+      document.getElementById('copyJsonBtn').addEventListener('click', function () {
+        navigator.clipboard.writeText(formattedJson).then(function () {
+          alert('Database JSON copied to clipboard!');
+        }).catch(function () {
+          alert('Failed to copy. Please manually select the code box.');
+        });
+      });
+
+      // 6. Sign Out Handler
+      document.getElementById('logoutProfileBtn').addEventListener('click', function () {
+        if (confirm('Are you sure you want to sign out?')) {
+          localStorage.removeItem('vybe-session');
+          window.location.href = 'home.html';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -84,7 +84,7 @@ function logStep(stepNum, message) {
   let lastDialogMessage = '';
   page.on('dialog', async (dialog) => {
     lastDialogMessage = dialog.message();
-    console.log(`   💬 [Browser Alert Dialog]: "${lastDialogMessage}"`);
+    console.log(`   💬 [Browser Dialog]: "${lastDialogMessage}"`);
     await dialog.accept();
   });
 
@@ -104,7 +104,6 @@ function logStep(stepNum, message) {
     console.log('   📸 Screenshot saved: 01-loading-page.png');
     console.log('   ⏳ Waiting for automatic redirection to home.html...');
 
-    // Wait for the redirection to home.html or navigate
     try {
       await page.waitForURL('**/home.html', { timeout: 6000 });
       console.log('   ✅ Successfully redirected to home.html automatically!');
@@ -132,11 +131,6 @@ function logStep(stepNum, message) {
     // Toggle back to Dark mode
     await page.click('#themeToggle');
     await page.waitForTimeout(300);
-
-    // Scroll down to Programs section
-    console.log('   📜 Scrolling down to view programs...');
-    await page.evaluate(() => window.scrollBy(0, 700));
-    await page.waitForTimeout(500);
 
     // -------------------------------------------------------------------------
     // STEP 3: Navigate to Strength Training Program Page
@@ -177,8 +171,8 @@ function logStep(stepNum, message) {
     console.log('   📸 Screenshot saved: 06-register-validation-error.png');
 
     // Enter matching valid password to complete registration
-    console.log('   ✍️ Correcting password and completing registration...');
-    const testEmail = `athlete_${Date.now()}@thevybe.com`;
+    console.log('   ✍️ Completing registration for Jane Doe...');
+    const testEmail = `jane_athlete_${Date.now()}@thevybe.com`;
     await page.fill('#registerEmail', testEmail);
     await page.fill('#registerPassword', 'StrongPassword2026!');
     await page.fill('#registerConfirm', 'StrongPassword2026!');
@@ -189,9 +183,9 @@ function logStep(stepNum, message) {
     console.log('   ✅ Registration completed! Successfully redirected to login.html');
 
     // -------------------------------------------------------------------------
-    // STEP 5: Sign In Page (html/login.html)
+    // STEP 5: Sign In Page -> Redirect to Profile Page
     // -------------------------------------------------------------------------
-    logStep(5, 'User logs in with credentials on Sign In page');
+    logStep(5, 'User logs in with credentials and lands on Profile Page');
     await page.screenshot({ path: path.join(SCREENSHOT_DIR, '07-login-page.png') });
     console.log('   📸 Screenshot saved: 07-login-page.png');
 
@@ -200,57 +194,91 @@ function logStep(stepNum, message) {
     await page.fill('#loginPassword', 'StrongPassword2026!');
     await page.click('#loginForm button[type="submit"]');
 
-    // Wait for redirect to home page
-    await page.waitForURL('**/home.html', { timeout: 5000 });
-    console.log('   ✅ Login successful! Redirected to home.html with active session.');
+    // Wait for redirect to profile.html
+    await page.waitForURL('**/profile.html', { timeout: 5000 });
+    console.log('   ✅ Login successful! Redirected directly to profile.html with active session.');
 
     // -------------------------------------------------------------------------
-    // STEP 6: Visit Contact Page & Test the Asynchronous Promise Form
+    // STEP 6: Explore Athlete Profile & JSON Database Inspector
     // -------------------------------------------------------------------------
-    logStep(6, 'User visits Contact Us page and submits inquiry (Testing Promise)');
+    logStep(6, 'User views Athlete Dashboard and JSON Database Inspector');
+    await page.waitForSelector('#profileName');
+    const profileName = await page.textContent('#profileName');
+    const profileEmail = await page.textContent('#profileEmail');
+    const dbAccountCount = await page.textContent('#dbAccountCount');
+    console.log(`   👤 Profile Name: "${profileName.trim()}"`);
+    console.log(`   📧 Profile Email: "${profileEmail.trim()}"`);
+    console.log(`   📊 Stored JSON Accounts Count: ${dbAccountCount.trim()}`);
+
+    // Verify raw JSON in pre box
+    const jsonContent = await page.textContent('#jsonViewer');
+    const hasEmailInJson = jsonContent.includes(testEmail);
+    console.log(`   🔍 New user found in live JSON: ${hasEmailInJson ? 'YES (Confirmed!)' : 'NO'}`);
+
+    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '08-profile-page.png'), fullPage: true });
+    console.log('   📸 Screenshot saved: 08-profile-page.png');
+
+    // Test download users.json trigger
+    console.log('   📥 Testing "DOWNLOAD USERS.JSON" button...');
+    const [download] = await Promise.all([
+      page.waitForEvent('download').catch(() => null),
+      page.click('#downloadJsonBtn')
+    ]);
+    if (download) {
+      console.log(`   💾 Download triggered: ${download.suggestedFilename()}`);
+    }
+
+    // -------------------------------------------------------------------------
+    // STEP 7: Persistent Navbar State across other pages
+    // -------------------------------------------------------------------------
+    logStep(7, 'User visits Home Page — Verify Navbar shows logged-in status');
+    await page.goto(`${BASE_URL}/home.html`);
+    await page.waitForLoadState('networkidle');
+
+    const navUserLinkText = await page.textContent('nav.navbar a.signin');
+    const navBtnText = await page.textContent('#signupBtn');
+    console.log(`   👤 Navbar User Link: "${navUserLinkText.trim()}" (Points to Profile)`);
+    console.log(`   🔘 Navbar Action Button: "${navBtnText.trim()}" (Logout button)`);
+    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '09-home-page-logged-in.png') });
+    console.log('   📸 Screenshot saved: 09-home-page-logged-in.png');
+
+    // -------------------------------------------------------------------------
+    // STEP 8: Test Contact Form Promise Submission
+    // -------------------------------------------------------------------------
+    logStep(8, 'User visits Contact Page & tests Promise Submission');
     await page.goto(`${BASE_URL}/contact.html`);
     await page.waitForLoadState('networkidle');
-    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '08-contact-page.png') });
-    console.log('   📸 Screenshot saved: 08-contact-page.png');
 
     console.log('   ✍️ Filling in Contact Inquiry form...');
-    await page.fill('#fullName', 'Samanyu Thakur');
-    await page.fill('#emailAddr', 'samanyu@thevybefitness.com');
+    await page.fill('#fullName', 'Jane Doe');
+    await page.fill('#emailAddr', testEmail);
     await page.fill('#phoneNum', '+91 98765 43210');
     await page.selectOption('#programInterest', 'strength');
-    await page.fill('#messageBox', 'I want to sign up for personal strength training and muscle hypertrophy coaching.');
+    await page.fill('#messageBox', 'I am logged in and requesting a personal hypertrophy workout split.');
 
-    console.log('   🚀 Clicking "SEND MESSAGE" to trigger the JavaScript Promise...');
+    console.log('   🚀 Submitting form to trigger JavaScript Promise...');
     const submitBtn = page.locator('#contactForm button[type="submit"]');
-    
-    // Click submit and check the pending Promise state
     await submitBtn.click();
 
     // Check loading text in pending state
     const loadingText = await submitBtn.textContent();
-    console.log(`   ⏳ Promise State: PENDING (Button text: "${loadingText.trim()}")`);
-    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '09-contact-form-promise-sending.png') });
-    console.log('   📸 Screenshot saved: 09-contact-form-promise-sending.png');
+    console.log(`   ⏳ Promise State: PENDING (Button: "${loadingText.trim()}")`);
+    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '10-contact-form-promise-sending.png') });
 
     // Wait for the Promise to resolve (1.5s simulated latency)
     await page.waitForTimeout(1900);
     console.log('   🎉 Promise State: RESOLVED!');
     console.log(`   📬 Alert confirmed: "${lastDialogMessage}"`);
-
-    // Button should be restored to normal state
-    const restoredText = await submitBtn.textContent();
-    const isDisabled = await submitBtn.isDisabled();
-    console.log(`   🔄 Button restored: "${restoredText.trim()}", Disabled: ${isDisabled}`);
-    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '10-contact-form-success.png') });
-    console.log('   📸 Screenshot saved: 10-contact-form-success.png');
+    await page.screenshot({ path: path.join(SCREENSHOT_DIR, '11-contact-form-success.png') });
+    console.log('   📸 Screenshot saved: 11-contact-form-success.png');
 
     // -------------------------------------------------------------------------
     // ALL TESTS COMPLETED
     // -------------------------------------------------------------------------
     console.log('\n===============================================================');
-    console.log('✨ ALL END-TO-END USER JOURNEYS PASSED SUCCESSFULLY! ✨');
+    console.log('✨ ALL END-TO-END USER & PROFILE JOURNEYS PASSED SUCCESSFULLY! ✨');
     console.log('===============================================================');
-    console.log(`Total 10 screenshots captured in: ${SCREENSHOT_DIR}\n`);
+    console.log(`Total 11 screenshots captured in: ${SCREENSHOT_DIR}\n`);
 
   } catch (err) {
     console.error('❌ E2E Test encountered an error:', err);

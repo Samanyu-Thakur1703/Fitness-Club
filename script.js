@@ -48,13 +48,74 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const signupButtons = document.querySelectorAll('#signupBtn, #mobileSignupBtn');
-  signupButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const isSubdir = window.location.pathname.includes('/html/');
-      window.location.href = isSubdir ? 'register.html' : 'html/register.html';
-    });
-  });
+  /* =========================================================================
+   * Dynamic Authentication & Session State Management across all pages
+   * ========================================================================= */
+  function syncAuthNavbar() {
+    const isSubdir = window.location.pathname.includes('/html/');
+    const sessionId = localStorage.getItem('vybe-session');
+    const rawUsers = localStorage.getItem('vybe-users');
+
+    let activeUser = null;
+    if (sessionId && rawUsers) {
+      try {
+        const store = JSON.parse(rawUsers);
+        if (store && Array.isArray(store.users)) {
+          activeUser = store.users.find((u) => u.id === sessionId);
+        }
+      } catch (_) {}
+    }
+
+    const signinLinks = document.querySelectorAll('a.signin');
+    const signupButtons = document.querySelectorAll('#signupBtn, #mobileSignupBtn');
+
+    if (activeUser) {
+      // User is logged in: Show "👤 <First Name>" and "LOGOUT"
+      const firstName = (activeUser.name || 'Athlete').trim().split(' ')[0];
+      const profilePath = isSubdir ? '../profile.html' : 'profile.html';
+
+      signinLinks.forEach((link) => {
+        link.textContent = `👤 ${firstName.toUpperCase()}`;
+        link.href = profilePath;
+        link.title = `View profile for ${activeUser.name}`;
+      });
+
+      signupButtons.forEach((btn) => {
+        btn.textContent = 'LOGOUT';
+        btn.style.background = '#e04f4f';
+        btn.style.boxShadow = '0 0 20px rgba(224, 79, 79, 0.4)';
+        btn.onclick = (e) => {
+          e.preventDefault();
+          if (confirm('Are you sure you want to log out?')) {
+            localStorage.removeItem('vybe-session');
+            alert('You have been logged out.');
+            window.location.href = isSubdir ? '../home.html' : 'home.html';
+          }
+        };
+      });
+    } else {
+      // User is guest: Show "SIGN IN" and "SIGN UP"
+      const loginPath = isSubdir ? 'login.html' : 'html/login.html';
+      const registerPath = isSubdir ? 'register.html' : 'html/register.html';
+
+      signinLinks.forEach((link) => {
+        link.textContent = 'SIGN IN';
+        link.href = loginPath;
+      });
+
+      signupButtons.forEach((btn) => {
+        btn.textContent = 'SIGN UP';
+        btn.style.background = '';
+        btn.style.boxShadow = '';
+        btn.onclick = (e) => {
+          e.preventDefault();
+          window.location.href = registerPath;
+        };
+      });
+    }
+  }
+
+  syncAuthNavbar();
 
   /* =========================================================================
    * Asynchronous Contact Form Submission using a JavaScript Promise
