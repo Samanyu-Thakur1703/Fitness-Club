@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const signupButtons = document.querySelectorAll('#signupBtn, #mobileSignupBtn');
   signupButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      alert('Welcome to THE VYBE! Registration portal is opening soon.');
+      const isSubdir = window.location.pathname.includes('/html/');
+      window.location.href = isSubdir ? 'register.html' : 'html/register.html';
     });
   });
 
