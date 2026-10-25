@@ -1,0 +1,11 @@
+{
+  "name": "fitness-club",
+  "version": "1.0.0",
+  "description": "THE VYBE - Fitness Club Website",
+  "scripts": {
+    "test": "node test-e2e.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.57.0"
+  }
+}
