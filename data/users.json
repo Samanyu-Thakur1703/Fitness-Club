@@ -1,0 +1,14 @@
+{
+  "_comment": "THE VYBE user accounts. Seed data only — at runtime the browser persists new registrations to localStorage via js/storage.js. Each account is a flat record; the password is stored as a plain SHA-256 hash so the source file never holds live credentials.",
+  "users": [
+    {
+      "id": "usr_0001",
+      "email": "athlete@thevybe.com",
+      "passwordHash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+      "passwordSalt": "vybe-salt-a1b2",
+      "name": "Alex Morgan",
+      "createdAt": "2026-10-24T00:00:00.000Z",
+      "memberSince": "October 2026"
+    }
+  ]
+}

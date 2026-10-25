@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/auth.css">
+  <title>Sign In - THE VYBE</title>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="navbar">
+
+      <a href="../home.html#hero" class="logo">
+        <img src="../assets/logo.png" alt="logo" height="80px">
+        <span>VYBE</span>
+      </a>
+
+      <div class="desktop-nav">
+        <a href="../home.html#hero">HOME</a>
+        <a href="../home.html#programs">PROGRAMS</a>
+        <a href="../contact.html">CONTACT US</a>
+        <a href="login.html" class="signin">SIGN IN</a>
+        <button id="signupBtn" type="button">SIGN UP</button>
+      </div>
+
+      <details class="mobile-menu">
+        <summary class="menu-button" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </summary>
+
+        <div class="mobile-menu-content">
+          <a href="../home.html#hero">HOME</a>
+          <a href="../home.html#programs">PROGRAMS</a>
+          <a href="../contact.html">CONTACT US</a>
+          <a href="login.html" class="signin">SIGN IN</a>
+          <button id="mobileSignupBtn" type="button">SIGN UP</button>
+        </div>
+      </details>
+
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark and light mode" title="Toggle dark/light theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="m4.93 4.93 1.41 1.41"></path>
+          <path d="m17.66 17.66 1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="m6.34 17.66-1.41 1.41"></path>
+          <path d="m19.07 4.93-1.41 1.41"></path>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="auth-hero">
+      <div class="auth-hero-inner">
+        <span class="auth-badge">WELCOME BACK</span>
+        <h1>SIGN IN TO THE VYBE</h1>
+        <p>Access your training plans, track progress, and book sessions with your coaches.</p>
+      </div>
+    </section>
+
+    <section class="auth-section">
+      <div class="auth-card">
+        <form id="loginForm" class="auth-form" novalidate>
+          <div class="form-group">
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" class="form-control" placeholder="you@example.com" required autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" class="form-control" placeholder="Your password" required autocomplete="current-password" />
+          </div>
+
+          <div id="loginError" class="auth-error" role="alert" aria-live="polite"></div>
+
+          <button type="submit" class="form-submit-btn auth-submit-btn">SIGN IN</button>
+        </form>
+
+        <p class="auth-switch">
+          Don't have an account?
+          <a href="register.html" class="auth-link">Create one</a>
+        </p>
+
+        <p class="auth-demo">
+          Demo account: <strong>athlete@thevybe.com</strong> / <strong>password</strong>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a class="footer-logo" href="../home.html#hero"><img src="../assets/logo.png" alt="The Vybe Fitness Club logo"></a><span class="footer-name">THE VYBE</span><p class="footer-tagline">More than a gym. It's a lifestyle.</p><div class="footer-socials" aria-label="Social media links"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">ig</a><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">x</a></div>
+      </div>
+      <div class="footer-column"><h2>Quick Links</h2><nav class="footer-links" aria-label="Footer navigation"><a href="../home.html#hero">Home</a><a href="../home.html#programs">Programs</a><a href="../home.html#touch">About Us</a><a href="../contact.html">Contact Us</a></nav></div><div class="footer-column"><h2>Programs</h2><nav class="footer-links" aria-label="Program navigation"><a href="../strength-training.html">Strength Training</a><a href="../cardio-fitness.html">Cardio Fitness</a><a href="../flexibility-mobility.html">Flexibility &amp; Mobility</a><a href="../nutrition-coaching.html">Nutrition Coaching</a></nav></div><div class="footer-column"><h2>Contact</h2><div class="footer-contact"><a href="tel:+911234567890"><strong>Phone</strong>+91 12345 67890</a><a href="mailto:info@thevybefitness.com"><strong>Email</strong>info@thevybefitness.com</a><address><strong>Visit Us</strong>123 Fitness Street,<br>Your City</address></div></div>
+    </div>
+    <span class="footer-accent" aria-hidden="true"></span><p class="copyright">&copy; 2026 THE VYBE. All rights reserved.</p>
+  </footer>
+
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+
+</html>
