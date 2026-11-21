@@ -1,2 +1,18 @@
-docs/
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+
+# Testing artifacts & reports
+test-results/
+playwright-report/
+blob-report/
+
+# Editor & OS files
 .vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docs
+docs/

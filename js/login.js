@@ -40,7 +40,7 @@
         try {
           window.localStorage.setItem('vybe-login-toast', 'signed-in:' + account.name);
         } catch (_) {}
-        window.location.href = '../home.html';
+        window.location.href = '../profile.html';
       })
       .catch(function (err) {
         showError(err.message || 'Sign in failed. Please try again.');
